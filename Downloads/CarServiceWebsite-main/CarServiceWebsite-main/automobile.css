@@ -1,0 +1,132 @@
+/* Reset */
+* {
+    margin: 6px;;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-bottom-right-radius: 50px;  /* Adjust the value to increase or decrease the curve */
+    border-top-left-radius: 50px;
+}
+
+/* Carousel section */
+.carousel {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+    border:black;
+    border-top-right-radius: 50px;  /* Adjust the value to increase or decrease the curve */
+    border-bottom-left-radius: 50px;
+}
+
+/* Form section */
+.form-box {
+    width: 50%;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    border-top-left-radius: 25px;  /* Adjust the value to increase or decrease the curve */
+    /* border-bottom-right-radius: 25px */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color cubic-bezier(0.215, 0.610, 0.355, 2) ease;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+.lgnbtn a {
+    text-decoration: none;
+}
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: border-color cubic-bezier(0.215, 0.610, 0.355, 2) ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.extra-links {
+    margin-top: 20px;
+    font-size: 14px;
+    color:gainsboro;
+}
+
+.extra-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+    
+}
+
+.extra-links p {
+    margin-top: 10px;
+    color: #007bff;
+}
