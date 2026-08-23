@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const adminController_1 = require("../controllers/adminController");
+const auth_1 = require("../middleware/auth");
+const User_1 = require("../models/User");
+const router = (0, express_1.Router)();
+router.use(auth_1.authenticate, (0, auth_1.authorize)(User_1.UserRole.ADMIN));
+router.get('/dashboard', adminController_1.AdminController.getDashboard);
+router.post('/doctors', adminController_1.AdminController.createDoctor);
+router.patch('/doctors/:id', adminController_1.AdminController.updateDoctor);
+router.get('/doctors/:id/leave-conflicts', adminController_1.AdminController.checkLeaveConflicts);
+router.post('/doctors/:id/leave', adminController_1.AdminController.createLeave);
+router.get('/leaves', adminController_1.AdminController.getLeaves);
+router.delete('/leaves/:id', adminController_1.AdminController.deleteLeave);
+router.get('/specializations', adminController_1.AdminController.getSpecializations);
+router.post('/specializations', adminController_1.AdminController.createSpecialization);
+router.get('/notifications', adminController_1.AdminController.getFailedNotifications);
+router.post('/notifications/:id/retry', adminController_1.AdminController.retryNotification);
+router.get('/audit-logs', adminController_1.AdminController.getAuditLogs);
+exports.default = router;
+//# sourceMappingURL=adminRoutes.js.map
