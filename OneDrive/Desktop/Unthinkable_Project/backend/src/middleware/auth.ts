@@ -5,7 +5,6 @@ import { UserRole } from '../models/User';
 
 export interface AuthenticatedRequest extends Request {
   user?: TokenPayload;
-  cookies?: any;
 }
 
 export const authenticate = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
@@ -15,8 +14,8 @@ export const authenticate = (req: AuthenticatedRequest, res: Response, next: Nex
 
     if (authHeader && authHeader.startsWith('Bearer ')) {
       token = authHeader.split(' ')[1];
-    } else if (req.cookies && req.cookies.accessToken) {
-      token = req.cookies.accessToken;
+    } else if ((req as any).cookies && (req as any).cookies.accessToken) {
+      token = (req as any).cookies.accessToken;
     }
 
     if (!token) {
