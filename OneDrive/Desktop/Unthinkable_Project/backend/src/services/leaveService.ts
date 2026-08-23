@@ -58,14 +58,15 @@ export class LeaveService {
 
     try {
       await session.withTransaction(async () => {
-        leaveDoc = new DoctorLeave({
+        const lDoc = new DoctorLeave({
           doctorId,
           startDate: start,
           endDate: end,
           reason,
           createdBy,
         });
-        await leaveDoc.save({ session });
+        leaveDoc = lDoc;
+        await lDoc.save({ session });
 
         // Update doctor status if leave starts today
         const now = new Date();
@@ -97,7 +98,7 @@ export class LeaveService {
               userId: createdBy,
               action: AuditAction.DOCTOR_LEAVE_CREATED,
               entity: 'DoctorLeave',
-              entityId: leaveDoc._id.toString(),
+              entityId: lDoc._id.toString(),
               metadata: { doctorId, startDate, endDate, affectedCount },
             },
           ],

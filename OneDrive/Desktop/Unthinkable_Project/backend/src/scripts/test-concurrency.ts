@@ -45,7 +45,7 @@ const runConcurrencyTest = async () => {
       severity: 'Mild' as const,
     };
 
-    const promises: Promise<TestResult>[] = patients.map((patient, index) => {
+    const promises: Promise<TestResult>[] = patients.map((patient: any, index: number) => {
       return AppointmentService.confirmBooking({
         doctorId: doctor._id.toString(),
         patientId: patient._id.toString(),

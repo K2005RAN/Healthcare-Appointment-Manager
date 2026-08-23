@@ -57,7 +57,7 @@ export class SlotService {
     // Get doctor working hours for the target day of week
     const dayOfWeek = targetDate.getDay(); // 0 = Sunday, 1 = Monday, ...
     const workingConfig = doctor.workingHours.find(
-      (wh) => wh.dayOfWeek === dayOfWeek && wh.isActive
+      (wh: any) => wh.dayOfWeek === dayOfWeek && wh.isActive
     );
 
     if (!workingConfig) {
@@ -124,12 +124,12 @@ export class SlotService {
 
         // Check appointment conflict
         const isBooked = existingAppointments.some(
-          (app) => app.startTime.getTime() === currentSlotStart.getTime()
+          (app: any) => app.startTime.getTime() === currentSlotStart.getTime()
         );
 
         // Check hold conflict
         const matchingHold = activeHolds.find(
-          (hold) => hold.startTime.getTime() === currentSlotStart.getTime()
+          (hold: any) => hold.startTime.getTime() === currentSlotStart.getTime()
         );
         const isHeld = !!matchingHold;
         const isHeldByMe = currentPatientId && matchingHold ? matchingHold.patientId.toString() === currentPatientId : false;

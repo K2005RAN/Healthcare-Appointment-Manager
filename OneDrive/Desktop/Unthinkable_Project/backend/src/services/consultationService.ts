@@ -47,14 +47,15 @@ export class ConsultationService {
       await session.withTransaction(async () => {
         // Create Prescription if medications provided
         if (medications.length > 0) {
-          prescriptionDoc = new Prescription({
+          const pDoc = new Prescription({
             appointmentId,
             doctorId,
             patientId,
             medications,
             instructions: prescriptionInstructions,
           });
-          await prescriptionDoc.save({ session });
+          prescriptionDoc = pDoc;
+          await pDoc.save({ session });
 
           // Create Medication Reminders for patient
           for (const med of medications) {
@@ -65,7 +66,7 @@ export class ConsultationService {
               [
                 {
                   patientId,
-                  prescriptionId: prescriptionDoc._id,
+                  prescriptionId: pDoc._id,
                   medicationName: med.name,
                   dosage: med.dosage,
                   frequency: med.frequency,
@@ -80,7 +81,7 @@ export class ConsultationService {
         }
 
         // Create Consultation Document
-        consultationDoc = new Consultation({
+        const cDoc = new Consultation({
           appointmentId,
           doctorId,
           patientId,
@@ -90,11 +91,12 @@ export class ConsultationService {
           prescriptionId: prescriptionDoc ? prescriptionDoc._id : undefined,
           followUpInstructions,
         });
-        await consultationDoc.save({ session });
+        consultationDoc = cDoc;
+        await cDoc.save({ session });
 
         // Update Appointment status to COMPLETED
         appointment.status = AppointmentStatus.COMPLETED;
-        appointment.consultationId = consultationDoc._id;
+        appointment.consultationId = cDoc._id;
         await appointment.save({ session });
 
         await AuditLog.create(
@@ -103,7 +105,7 @@ export class ConsultationService {
               userId: doctorId,
               action: AuditAction.CONSULTATION_COMPLETED,
               entity: 'Consultation',
-              entityId: consultationDoc._id.toString(),
+              entityId: cDoc._id.toString(),
               metadata: { appointmentId, patientId, hasPrescription: !!prescriptionDoc },
             },
           ],
