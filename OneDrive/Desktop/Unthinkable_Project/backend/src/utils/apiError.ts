@@ -9,7 +9,7 @@ export class ApiError extends Error {
     this.errorCode = errorCode;
     this.details = details;
     Object.setPrototypeOf(this, new.target.prototype);
-    Error.captureStackTrace(this, this.constructor);
+    (Error as any).captureStackTrace(this, this.constructor);
   }
 
   static badRequest(message: string, errorCode = 'BAD_REQUEST', details?: any) {

@@ -442,7 +442,7 @@ export class AppointmentService {
     });
 
     // Send Reschedule Notification Emails to BOTH Patient & Doctor
-    setImmediate(async () => {
+    (global as any).setImmediate(async () => {
       try {
         const patient = await Patient.findById(appt.patientId).populate('userId');
         const doctor = await Doctor.findById(appt.doctorId).populate('userId');
@@ -507,7 +507,7 @@ export class AppointmentService {
     });
 
     // Send Cancellation Emails to BOTH Patient & Doctor
-    setImmediate(async () => {
+    (global as any).setImmediate(async () => {
       try {
         const patient = await Patient.findById(appt.patientId).populate('userId');
         const doctor = await Doctor.findById(appt.doctorId).populate('userId');

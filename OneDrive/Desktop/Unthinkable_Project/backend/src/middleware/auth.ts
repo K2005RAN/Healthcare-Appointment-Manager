@@ -5,6 +5,7 @@ import { UserRole } from '../models/User';
 
 export interface AuthenticatedRequest extends Request {
   user?: TokenPayload;
+  cookies?: any;
 }
 
 export const authenticate = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
