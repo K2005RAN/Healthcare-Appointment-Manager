@@ -128,28 +128,7 @@ The platform is equipped with an intelligent, rule-compliant fallback parser and
 
 ## ⚡ Concurrency Control & Double-Booking Prevention
 
-MediBridge guarantees zero double-booking under high request loads through a **Two-Tier Concurrency Architecture**:
-
-```
-[ Incoming Booking Request ]
-             │
-             ▼
-┌───────────────────────────────────────────────────────────┐
-│ 1. Atomic SlotHold Creation                               │
-│    MongoDB Compound Unique Index:                         │
-│    { doctorId: 1, startTime: 1, status: "HELD" }         │
-│    TTL Index on expiresAt (Automatic 5-min Expiration)    │
-└────────────────────────────┬──────────────────────────────┘
-                             │ Success
-                             ▼
-┌───────────────────────────────────────────────────────────┐
-│ 2. MongoDB Session Transaction (session.startTransaction) │
-│    - Validates Working Hours & Doctor Leave Conflicts     │
-│    - Checks Confirmed Collisions (doctorId + startTime)   │
-│    - Atomically Creates Appointment Document             │
-│    - Updates SlotHold status to "CONFIRMED"               │
-│    - Commits ACID Transaction                             │
-└────────────────────────────┬──────────────────────────────┘
+MediBridge guarantees![MediBridge Appointment Booking System Architecture](./docs/assets/system_architecture.png)��───────────────────────────┬──────────────────────────────┘
                              │ Commit Success
                              ▼
 ┌───────────────────────────────────────────────────────────┐
