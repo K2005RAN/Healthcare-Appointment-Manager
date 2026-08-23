@@ -41,39 +41,39 @@ export const NotificationsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <Navbar />
       <div className="flex flex-1">
         <Sidebar />
 
         <main className="flex-1 p-6 md:p-8 max-w-7xl">
           <div className="mb-8">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">Notification Queue & Failures</h1>
-            <p className="text-slate-500 mt-1">Monitor exponential backoff email retries and manually trigger failed dispatches.</p>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white">Notification Queue & Failures</h1>
+            <p className="text-slate-400 mt-1">Monitor exponential backoff email retries and manually trigger failed dispatches.</p>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-card-subtle">
+          <div className="glass-panel-accent rounded-3xl p-6 shadow-xl">
             {notifications.length > 0 ? (
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm text-slate-600">
-                  <thead className="bg-slate-50 text-slate-700 uppercase text-xs font-bold border-b border-slate-200">
+                <table className="w-full text-left text-sm text-slate-300">
+                  <thead className="bg-slate-950/80 text-slate-400 uppercase text-xs font-bold border-b border-slate-800">
                     <tr>
-                      <th className="p-3">Recipient</th>
-                      <th className="p-3">Type</th>
-                      <th className="p-3">Attempts</th>
-                      <th className="p-3">Error</th>
-                      <th className="p-3 text-right">Action</th>
+                      <th className="p-3.5">Recipient</th>
+                      <th className="p-3.5">Type</th>
+                      <th className="p-3.5">Attempts</th>
+                      <th className="p-3.5">Error</th>
+                      <th className="p-3.5 text-right">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-slate-800/85">
                     {notifications.map((n) => (
-                      <tr key={n._id}>
-                        <td className="p-3 font-bold text-slate-900">{n.recipient}</td>
-                        <td className="p-3"><Badge variant="warning">{n.type}</Badge></td>
-                        <td className="p-3">{n.attemptCount} / 4</td>
-                        <td className="p-3 text-xs text-rose-600 font-mono truncate max-w-xs">{n.error || 'N/A'}</td>
-                        <td className="p-3 text-right">
-                          <Button size="sm" variant="outline" leftIcon={<RefreshCw className="w-3.5 h-3.5" />} onClick={() => handleRetry(n._id)}>
+                      <tr key={n._id} className="hover:bg-slate-850/40 transition-colors">
+                        <td className="p-3.5 font-bold text-white">{n.recipient}</td>
+                        <td className="p-3.5"><Badge variant="warning">{n.type}</Badge></td>
+                        <td className="p-3.5 text-slate-300">{n.attemptCount} / 4</td>
+                        <td className="p-3.5 text-xs text-rose-400 font-mono truncate max-w-xs" title={n.error}>{n.error || 'N/A'}</td>
+                        <td className="p-3.5 text-right">
+                          <Button size="sm" variant="gradient" className="shadow-glow-brand" leftIcon={<RefreshCw className="w-3.5 h-3.5" />} onClick={() => handleRetry(n._id)}>
                             Retry
                           </Button>
                         </td>
@@ -83,9 +83,9 @@ export const NotificationsPage: React.FC = () => {
                 </table>
               </div>
             ) : (
-              <div className="text-center py-12">
-                <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
-                <p className="text-slate-700 font-bold">No Failed Notifications</p>
+              <div className="text-center py-12 bg-slate-950/60 rounded-2xl border border-slate-800 shadow-inner">
+                <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto mb-3 animate-pulse-glow" />
+                <p className="text-white font-bold">No Failed Notifications</p>
                 <p className="text-xs text-slate-400 mt-1">All email notifications dispatched cleanly or scheduled in queue.</p>
               </div>
             )}

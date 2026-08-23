@@ -149,7 +149,7 @@ export const BookingFlowPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <Navbar />
       <div className="flex flex-1">
         <Sidebar />
@@ -157,8 +157,8 @@ export const BookingFlowPage: React.FC = () => {
         <main className="flex-1 p-6 md:p-8 max-w-4xl mx-auto w-full">
           {/* Booking Progress Indicator */}
           {step < 5 && (
-            <div className="mb-8 bg-white p-4 rounded-2xl border border-slate-200 shadow-card-subtle">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+            <div className="mb-8 glass-panel-accent p-4 rounded-2xl shadow-xl">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
                 <span>Step {step} of 4</span>
                 <span>
                   {step === 1 && 'Select Doctor'}
@@ -167,9 +167,9 @@ export const BookingFlowPage: React.FC = () => {
                   {step === 4 && 'Review & Confirm'}
                 </span>
               </div>
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
                 <div
-                  className="bg-brand-600 h-full transition-all duration-300"
+                  className="bg-brand-500 shadow-glow-brand h-full transition-all duration-300"
                   style={{ width: `${(step / 4) * 100}%` }}
                 />
               </div>
@@ -192,33 +192,33 @@ export const BookingFlowPage: React.FC = () => {
 
           {/* STEP 1 & 2: Select Date and Slot */}
           {step <= 2 && doctor && (
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-card-subtle space-y-6">
-              <div className="flex items-center gap-4 pb-6 border-b border-slate-100">
-                <div className="w-16 h-16 rounded-2xl bg-brand-600 text-white font-bold text-2xl flex items-center justify-center shadow-md">
+            <div className="glass-panel-accent rounded-2xl p-6 shadow-xl space-y-6">
+              <div className="flex items-center gap-4 pb-6 border-b border-slate-800">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600 to-sky-400 text-white font-bold text-2xl flex items-center justify-center shadow-lg">
                   {doctor.userId?.name?.charAt(0) || 'D'}
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-slate-900">Dr. {doctor.userId?.name}</h2>
-                  <p className="text-sm text-slate-500">{doctor.specializationIds?.[0]?.name}</p>
-                  <p className="text-xs text-brand-700 font-semibold mt-0.5">₹{doctor.consultationFee} consultation fee</p>
+                  <h2 className="text-xl font-bold text-white">Dr. {doctor.userId?.name}</h2>
+                  <p className="text-sm text-slate-400">{doctor.specializationIds?.[0]?.name}</p>
+                  <p className="text-xs text-sky-400 font-semibold mt-0.5">₹{doctor.consultationFee} consultation fee</p>
                 </div>
               </div>
 
               {/* Date Selection */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">Select Appointment Date</label>
+                <label className="block text-sm font-semibold text-white mb-2">Select Appointment Date</label>
                 <input
                   type="date"
                   min={new Date().toISOString().split('T')[0]}
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full sm:w-64 p-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-500 focus:outline-none"
+                  className="w-full sm:w-64 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all"
                 />
               </div>
 
               {/* Slots Grid */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-3">Available Time Slots</label>
+                <label className="block text-sm font-semibold text-white mb-3">Available Time Slots</label>
                 {slots.length > 0 ? (
                   <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
                     {slots.map((slot) => {
@@ -230,15 +230,15 @@ export const BookingFlowPage: React.FC = () => {
                           onClick={() => setSelectedSlot(slot)}
                           className={`p-3 rounded-xl text-xs font-bold transition-all border ${
                             isSelected
-                              ? 'bg-brand-600 text-white border-brand-600 shadow-md ring-2 ring-brand-400'
+                              ? 'bg-brand-500 text-white border-brand-500 shadow-glow-brand ring-2 ring-brand-400'
                               : slot.isAvailable
-                              ? 'bg-slate-50 hover:bg-brand-50 text-slate-800 border-slate-200 hover:border-brand-300'
-                              : 'bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed line-through'
+                              ? 'bg-slate-850 hover:bg-brand-500/20 text-slate-200 border-slate-750 hover:border-brand-500/40'
+                              : 'bg-slate-900 text-slate-500 border-slate-800/80 cursor-not-allowed line-through'
                           }`}
                         >
                           {slot.timeLabel}
                           {!slot.isAvailable && (
-                            <span className="block text-[10px] text-slate-400 font-normal no-underline">
+                            <span className="block text-[10px] text-slate-500 font-normal no-underline">
                               {slot.reason || 'Booked'}
                             </span>
                           )}
@@ -247,17 +247,19 @@ export const BookingFlowPage: React.FC = () => {
                     })}
                   </div>
                 ) : (
-                  <p className="text-sm text-slate-500 italic p-4 bg-slate-50 rounded-xl">
+                  <p className="text-sm text-slate-400 italic p-4 bg-slate-950/60 rounded-xl border border-slate-850">
                     No available time slots for this date (Doctor may be on leave or non-working day).
                   </p>
                 )}
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex justify-end">
+              <div className="pt-4 border-t border-slate-800 flex justify-end">
                 <Button
                   disabled={!selectedSlot}
                   isLoading={isLoading}
                   onClick={handleHoldSlot}
+                  variant="gradient"
+                  className="shadow-glow-brand"
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
                   Hold Slot & Continue
@@ -268,56 +270,56 @@ export const BookingFlowPage: React.FC = () => {
 
           {/* STEP 3: Symptoms Form */}
           {step === 3 && (
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-card-subtle space-y-6">
+            <div className="glass-panel-accent rounded-2xl p-6 shadow-xl space-y-6">
               <div>
-                <h2 className="text-xl font-bold text-slate-900">Enter Your Symptoms</h2>
-                <p className="text-sm text-slate-500 mt-1">
+                <h2 className="text-xl font-bold text-white">Enter Your Symptoms</h2>
+                <p className="text-sm text-slate-400 mt-1">
                   Our AI will synthesize a pre-visit summary for Dr. {doctor?.userId?.name}.
                 </p>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Chief Complaint *</label>
+                  <label className="block text-sm font-medium text-slate-350 mb-1">Chief Complaint *</label>
                   <input
                     type="text"
                     required
                     value={symptomsForm.chiefComplaint}
                     onChange={(e) => setSymptomsForm({ ...symptomsForm, chiefComplaint: e.target.value })}
                     placeholder="e.g. Persistent dry cough and sore throat"
-                    className="w-full rounded-xl border border-slate-300 p-3 text-sm focus:border-brand-500 focus:outline-none"
+                    className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all placeholder:text-slate-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Specific Symptoms (comma separated)</label>
+                  <label className="block text-sm font-medium text-slate-350 mb-1">Specific Symptoms (comma separated)</label>
                   <input
                     type="text"
                     value={symptomsForm.symptomsStr}
                     onChange={(e) => setSymptomsForm({ ...symptomsForm, symptomsStr: e.target.value })}
                     placeholder="Fever, fatigue, headache"
-                    className="w-full rounded-xl border border-slate-300 p-3 text-sm focus:border-brand-500 focus:outline-none"
+                    className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all placeholder:text-slate-600"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Symptom Duration</label>
+                    <label className="block text-sm font-medium text-slate-350 mb-1">Symptom Duration</label>
                     <input
                       type="text"
                       value={symptomsForm.duration}
                       onChange={(e) => setSymptomsForm({ ...symptomsForm, duration: e.target.value })}
                       placeholder="e.g. 3 days"
-                      className="w-full rounded-xl border border-slate-300 p-3 text-sm focus:border-brand-500 focus:outline-none"
+                      className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all placeholder:text-slate-600"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Severity</label>
+                    <label className="block text-sm font-medium text-slate-355 mb-1">Severity</label>
                     <select
                       value={symptomsForm.severity}
                       onChange={(e) => setSymptomsForm({ ...symptomsForm, severity: e.target.value as any })}
-                      className="w-full rounded-xl border border-slate-300 p-3 text-sm focus:border-brand-500 focus:outline-none"
+                      className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all [&>option]:bg-slate-950 [&>option]:text-white"
                     >
                       <option value="Mild">Mild</option>
                       <option value="Moderate">Moderate</option>
@@ -327,22 +329,22 @@ export const BookingFlowPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Additional Notes</label>
+                  <label className="block text-sm font-medium text-slate-350 mb-1">Additional Notes</label>
                   <textarea
                     rows={3}
                     value={symptomsForm.additionalInfo}
                     onChange={(e) => setSymptomsForm({ ...symptomsForm, additionalInfo: e.target.value })}
                     placeholder="Any allergies, current medications, or secondary symptoms..."
-                    className="w-full rounded-xl border border-slate-300 p-3 text-sm focus:border-brand-500 focus:outline-none"
+                    className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all placeholder:text-slate-600"
                   />
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                 <Button variant="outline" onClick={() => setStep(2)} leftIcon={<ArrowLeft className="w-4 h-4" />}>
                   Back
                 </Button>
-                <Button onClick={() => setStep(4)} rightIcon={<ArrowRight className="w-4 h-4" />}>
+                <Button variant="gradient" className="shadow-glow-brand" onClick={() => setStep(4)} rightIcon={<ArrowRight className="w-4 h-4" />}>
                   Review Details
                 </Button>
               </div>
@@ -351,31 +353,31 @@ export const BookingFlowPage: React.FC = () => {
 
           {/* STEP 4: Review & Confirm */}
           {step === 4 && (
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-card-subtle space-y-6">
-              <h2 className="text-xl font-bold text-slate-900">Review & Finalize Booking</h2>
+            <div className="glass-panel-accent rounded-2xl p-6 shadow-xl space-y-6">
+              <h2 className="text-xl font-bold text-white">Review & Finalize Booking</h2>
 
-              <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+              <div className="p-5 rounded-xl bg-slate-950/60 border border-slate-850 space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Doctor:</span>
-                  <span className="font-bold text-slate-900">Dr. {doctor?.userId?.name}</span>
+                  <span className="text-slate-400">Doctor:</span>
+                  <span className="font-bold text-white flex items-center gap-1">Dr. {doctor?.userId?.name}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Date & Time:</span>
-                  <span className="font-bold text-brand-700">
+                  <span className="text-slate-400">Date & Time:</span>
+                  <span className="font-bold text-sky-400">
                     {new Date(selectedSlot!.startTime).toLocaleDateString()} at {selectedSlot!.timeLabel}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Chief Complaint:</span>
-                  <span className="font-medium text-slate-900">{symptomsForm.chiefComplaint}</span>
+                  <span className="text-slate-400">Chief Complaint:</span>
+                  <span className="font-medium text-white">{symptomsForm.chiefComplaint}</span>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                 <Button variant="outline" onClick={() => setStep(3)} leftIcon={<ArrowLeft className="w-4 h-4" />}>
                   Edit Symptoms
                 </Button>
-                <Button isLoading={isLoading} onClick={handleConfirmBooking}>
+                <Button variant="gradient" className="shadow-glow-brand" isLoading={isLoading} onClick={handleConfirmBooking}>
                   Confirm Appointment
                 </Button>
               </div>
@@ -384,33 +386,34 @@ export const BookingFlowPage: React.FC = () => {
 
           {/* STEP 5: Success Confirmed Screen */}
           {step === 5 && bookingConfirmed && (
-            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-2xl text-center space-y-6 animate-scale-up">
-              <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
-                <CheckCircle2 className="w-12 h-12" />
+            <div className="glass-panel-accent border-glow-emerald rounded-2xl p-8 shadow-2xl text-center space-y-6 animate-scale-up">
+              <div className="w-20 h-20 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30 shadow-glow-teal">
+                <CheckCircle2 className="w-12 h-12 animate-pulse-glow" />
               </div>
 
               <div>
-                <span className="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-bold mb-2">
+                <span className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold mb-2">
                   ✓ Appointment Confirmed
                 </span>
-                <h2 className="text-2xl font-extrabold text-slate-900">Dr. {doctor?.userId?.name}</h2>
-                <p className="text-sm text-slate-500">{doctor?.specializationIds?.[0]?.name}</p>
-                <p className="text-lg font-bold text-brand-700 mt-3">
+                <h2 className="text-2xl font-extrabold text-white">Dr. {doctor?.userId?.name}</h2>
+                <p className="text-sm text-slate-400">{doctor?.specializationIds?.[0]?.name}</p>
+                <p className="text-lg font-bold text-sky-400 mt-3">
                   {new Date(bookingConfirmed.startTime).toLocaleDateString(undefined, {
                     weekday: 'long',
                     month: 'long',
                     day: 'numeric',
+                    year: 'numeric'
                   })}{' '}
                   at {new Date(bookingConfirmed.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </p>
               </div>
 
               {/* AI Pre-visit notice */}
-              <div className="p-4 rounded-xl bg-purple-50 border border-purple-200 text-left text-xs text-purple-900 flex items-start gap-3">
-                <BrainCircuit className="w-5 h-5 text-purple-600 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-xl bg-purple-950/40 border border-purple-500/30 text-left text-xs text-purple-250 flex items-start gap-3">
+                <BrainCircuit className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-bold">AI Pre-Visit Symptom Summary Queued</p>
-                  <p className="mt-0.5 opacity-90">
+                  <p className="font-bold text-purple-300">AI Pre-Visit Symptom Summary Queued</p>
+                  <p className="mt-0.5 text-slate-300 opacity-90 leading-relaxed">
                     Your symptoms are being processed. An AI summary with urgency indicators will be delivered to your doctor prior to consultation.
                   </p>
                 </div>
@@ -418,7 +421,7 @@ export const BookingFlowPage: React.FC = () => {
 
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Link to="/patient/appointments">
-                  <Button variant="primary">View My Appointments</Button>
+                  <Button variant="gradient" className="shadow-glow-brand">View My Appointments</Button>
                 </Link>
                 <Link to="/patient/dashboard">
                   <Button variant="outline">Return to Dashboard</Button>

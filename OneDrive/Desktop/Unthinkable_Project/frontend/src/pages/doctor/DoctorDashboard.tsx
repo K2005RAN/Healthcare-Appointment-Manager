@@ -61,17 +61,17 @@ export const DoctorDashboard: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-            <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 shadow-xl glass-card-hover">
+            <div className="glass-panel-accent border-glow-brand p-6 rounded-2xl shadow-xl glass-card-hover">
               <p className="text-xs text-slate-400 font-extrabold uppercase tracking-wider">Today's Consultations</p>
               <p className="text-3xl font-extrabold text-white mt-2">{todayAppointments.length}</p>
             </div>
-            <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 shadow-xl glass-card-hover">
+            <div className="glass-panel-accent border-glow-purple p-6 rounded-2xl shadow-xl glass-card-hover">
               <p className="text-xs text-slate-400 font-extrabold uppercase tracking-wider">Pending Appointments</p>
               <p className="text-3xl font-extrabold text-sky-400 mt-2">
                 {appointments.filter((a) => a.status === 'CONFIRMED').length}
               </p>
             </div>
-            <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 shadow-xl glass-card-hover">
+            <div className="glass-panel-accent border-glow-emerald p-6 rounded-2xl shadow-xl glass-card-hover">
               <p className="text-xs text-slate-400 font-extrabold uppercase tracking-wider">Completed Consultations</p>
               <p className="text-3xl font-extrabold text-emerald-400 mt-2">
                 {appointments.filter((a) => a.status === 'COMPLETED').length}
@@ -80,7 +80,7 @@ export const DoctorDashboard: React.FC = () => {
           </div>
 
           {/* Appointments Agenda Table */}
-          <div className="bg-slate-900/90 backdrop-blur-2xl rounded-3xl p-6 border border-slate-800 shadow-xl">
+          <div className="glass-panel-accent rounded-3xl p-6 shadow-xl">
             <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
               <Calendar className="w-5 h-5 text-sky-400" />
               Patient Consultation Agenda

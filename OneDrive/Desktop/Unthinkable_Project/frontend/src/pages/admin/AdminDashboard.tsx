@@ -85,7 +85,7 @@ export const AdminDashboard: React.FC = () => {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-            <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-xl glass-card-hover flex items-center gap-4">
+            <div className="glass-panel-accent border-glow-brand p-5 rounded-2xl shadow-xl glass-card-hover flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-brand-500/15 text-sky-400 flex items-center justify-center font-bold border border-brand-500/30 shrink-0 shadow-glow-brand">
                 <Users className="w-6 h-6" />
               </div>
@@ -95,7 +95,7 @@ export const AdminDashboard: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-xl glass-card-hover flex items-center gap-4">
+            <div className="glass-panel-accent border-glow-purple p-5 rounded-2xl shadow-xl glass-card-hover flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center font-bold border border-indigo-500/30 shrink-0 shadow-glow-indigo">
                 <Stethoscope className="w-6 h-6" />
               </div>
@@ -105,7 +105,7 @@ export const AdminDashboard: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-xl glass-card-hover flex items-center gap-4">
+            <div className="glass-panel-accent border-glow-emerald p-5 rounded-2xl shadow-xl glass-card-hover flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/30 shrink-0 shadow-glow-teal">
                 <CalendarCheck className="w-6 h-6" />
               </div>
@@ -115,7 +115,7 @@ export const AdminDashboard: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-xl glass-card-hover flex items-center gap-4">
+            <div className="glass-panel-accent border-glow-rose p-5 rounded-2xl shadow-xl glass-card-hover flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-rose-500/15 text-rose-400 flex items-center justify-center font-bold border border-rose-500/30 shrink-0 shadow-glow-rose">
                 <Bell className="w-6 h-6" />
               </div>
@@ -128,7 +128,7 @@ export const AdminDashboard: React.FC = () => {
 
           {/* Charts Row */}
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-slate-900/90 backdrop-blur-2xl p-6 rounded-3xl border border-slate-800 shadow-xl">
+            <div className="glass-panel-accent p-6 rounded-3xl shadow-xl">
               <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-sky-400" />
                 Appointments Trend
@@ -145,7 +145,7 @@ export const AdminDashboard: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-slate-900/90 backdrop-blur-2xl p-6 rounded-3xl border border-slate-800 shadow-xl">
+            <div className="glass-panel-accent p-6 rounded-3xl shadow-xl">
               <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2">
                 <Activity className="w-5 h-5 text-emerald-400" />
                 Status Distribution

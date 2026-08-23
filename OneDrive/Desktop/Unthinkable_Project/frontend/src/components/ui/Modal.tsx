@@ -41,23 +41,23 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-fade-in">
       <div
-        className={`bg-white rounded-2xl shadow-2xl border border-slate-100 w-full ${maxWidths[maxWidth]} overflow-hidden transform transition-all animate-scale-up`}
+        className={`glass-panel-accent rounded-3xl shadow-2xl w-full ${maxWidths[maxWidth]} overflow-hidden transform transition-all animate-scale-up`}
         onClick={(e) => e.stopPropagation()}
       >
         {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-            <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+            <h3 className="text-lg font-bold text-white">{title}</h3>
             <button
               onClick={onClose}
-              className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-200"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
         )}
-        <div className="p-6">{children}</div>
+        <div className="p-6 text-slate-200">{children}</div>
       </div>
     </div>
   );

@@ -142,7 +142,7 @@ export const PatientDashboard: React.FC = () => {
             <div className="lg:col-span-2 space-y-8">
               
               {/* Next Scheduled Appointment Card */}
-              <div className="bg-slate-900/90 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-slate-800 shadow-xl">
+              <div className="glass-panel-accent border-glow-brand rounded-3xl p-6 sm:p-7 shadow-xl">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-800 gap-4">
                   <div className="flex items-center gap-2.5">
                     <div className="w-9 h-9 rounded-xl bg-brand-500/20 text-sky-400 flex items-center justify-center border border-brand-500/30">
@@ -205,7 +205,7 @@ export const PatientDashboard: React.FC = () => {
               </div>
 
               {/* Recent AI Visit Summary */}
-              <div className="bg-slate-900/90 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-slate-800 shadow-xl">
+              <div className="glass-panel-accent border-glow-purple rounded-3xl p-6 sm:p-7 shadow-xl">
                 <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-purple-400" />
                   Latest AI Visit Summary & Guidelines
@@ -235,7 +235,7 @@ export const PatientDashboard: React.FC = () => {
             <div className="space-y-8">
               
               {/* Quick Actions Panel */}
-              <div className="bg-slate-900/90 backdrop-blur-2xl rounded-3xl p-6 border border-slate-800 shadow-xl">
+              <div className="glass-panel-accent rounded-3xl p-6 shadow-xl">
                 <h3 className="text-base font-bold text-white mb-4">Quick Actions</h3>
                 <div className="space-y-3">
                   <Link to="/doctors" className="block">
@@ -257,7 +257,7 @@ export const PatientDashboard: React.FC = () => {
               </div>
 
               {/* Today's Medications Widget */}
-              <div className="bg-slate-900/90 backdrop-blur-2xl rounded-3xl p-6 border border-slate-800 shadow-xl">
+              <div className="glass-panel-accent border-glow-emerald rounded-3xl p-6 shadow-xl">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-base font-bold text-white">Active Medications</h3>
                   <Badge variant="info">{medications.length}</Badge>

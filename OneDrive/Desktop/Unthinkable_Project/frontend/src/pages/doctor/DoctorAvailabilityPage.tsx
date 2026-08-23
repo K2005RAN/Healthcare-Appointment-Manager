@@ -39,25 +39,25 @@ export const DoctorAvailabilityPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <Navbar />
       <div className="flex flex-1">
         <Sidebar />
 
         <main className="flex-1 p-6 md:p-8 max-w-5xl mx-auto w-full">
           <div className="mb-8">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">Manage Availability & Working Hours</h1>
-            <p className="text-slate-500 mt-1">Configure your recurring work shifts, breaks, and consultation slot durations.</p>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white">Manage Availability & Working Hours</h1>
+            <p className="text-slate-400 mt-1">Configure your recurring work shifts, breaks, and consultation slot durations.</p>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-card-subtle space-y-6">
+          <div className="glass-panel-accent rounded-2xl p-6 shadow-xl space-y-6">
             {/* Slot Duration */}
             <div>
-              <label className="block text-sm font-bold text-slate-900 mb-2">Appointment Slot Duration</label>
+              <label className="block text-sm font-bold text-white mb-2">Appointment Slot Duration</label>
               <select
                 value={slotDuration}
                 onChange={(e) => setSlotDuration(Number(e.target.value))}
-                className="w-full sm:w-64 p-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-500 focus:outline-none"
+                className="w-full sm:w-64 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all [&>option]:bg-slate-950 [&>option]:text-white"
               >
                 <option value={15}>15 Minutes</option>
                 <option value={20}>20 Minutes</option>
@@ -69,10 +69,10 @@ export const DoctorAvailabilityPage: React.FC = () => {
 
             {/* Weekly Schedule Builder */}
             <div>
-              <h3 className="text-sm font-bold text-slate-900 mb-4">Weekly Practice Hours</h3>
+              <h3 className="text-sm font-bold text-white mb-4">Weekly Practice Hours</h3>
               <div className="space-y-3">
                 {workingHours.map((wh, idx) => (
-                  <div key={wh.dayName} className="flex flex-wrap items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-200 gap-4 text-xs font-semibold">
+                  <div key={wh.dayName} className="flex flex-wrap items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-850 gap-4 text-xs font-semibold">
                     <div className="flex items-center gap-3 w-32">
                       <input
                         type="checkbox"
@@ -82,13 +82,13 @@ export const DoctorAvailabilityPage: React.FC = () => {
                           updated[idx].isActive = e.target.checked;
                           setWorkingHours(updated);
                         }}
-                        className="rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                        className="rounded border-slate-800 bg-slate-950 text-brand-650 focus:ring-brand-500"
                       />
-                      <span className={wh.isActive ? 'text-slate-900 font-bold' : 'text-slate-400'}>{wh.dayName}</span>
+                      <span className={wh.isActive ? 'text-white font-bold' : 'text-slate-500'}>{wh.dayName}</span>
                     </div>
 
                     {wh.isActive ? (
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 text-slate-300">
                         <span>Shift:</span>
                         <input
                           type="time"
@@ -98,7 +98,7 @@ export const DoctorAvailabilityPage: React.FC = () => {
                             updated[idx].startTime = e.target.value;
                             setWorkingHours(updated);
                           }}
-                          className="p-1.5 rounded border border-slate-300"
+                          className="p-1.5 rounded bg-slate-950 border border-slate-800 text-white text-xs focus:outline-none focus:ring-1 focus:ring-brand-500"
                         />
                         <span>to</span>
                         <input
@@ -109,19 +109,19 @@ export const DoctorAvailabilityPage: React.FC = () => {
                             updated[idx].endTime = e.target.value;
                             setWorkingHours(updated);
                           }}
-                          className="p-1.5 rounded border border-slate-300"
+                          className="p-1.5 rounded bg-slate-950 border border-slate-800 text-white text-xs focus:outline-none focus:ring-1 focus:ring-brand-500"
                         />
                       </div>
                     ) : (
-                      <span className="text-slate-400 font-normal">Off / Closed</span>
+                      <span className="text-slate-500 font-normal">Off / Closed</span>
                     )}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex justify-end">
-              <Button isLoading={isSaving} onClick={handleSave} leftIcon={<Check className="w-4 h-4" />}>
+            <div className="pt-4 border-t border-slate-800 flex justify-end">
+              <Button isLoading={isSaving} variant="gradient" className="shadow-glow-brand" onClick={handleSave} leftIcon={<Check className="w-4 h-4" />}>
                 Save Schedule Changes
               </Button>
             </div>

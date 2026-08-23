@@ -30,86 +30,86 @@ export const MedicalHistoryPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <Navbar />
       <div className="flex flex-1">
         <Sidebar />
 
         <main className="flex-1 p-6 md:p-8 max-w-7xl">
           <div className="mb-8">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">Medical History & Prescriptions</h1>
-            <p className="text-slate-500 mt-1">Review consultation summaries, clinical diagnoses, and prescribed medicines.</p>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white">Medical History & Prescriptions</h1>
+            <p className="text-slate-400 mt-1">Review consultation summaries, clinical diagnoses, and prescribed medicines.</p>
           </div>
 
           <div className="space-y-8">
             {/* Consultation Summaries */}
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-card-subtle">
-              <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-purple-600" />
+            <div className="glass-panel-accent rounded-3xl p-6 shadow-xl">
+              <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-purple-400 animate-pulse-glow" />
                 AI Post-Visit Consultation Summaries
               </h2>
 
               {summaries.length > 0 ? (
                 <div className="space-y-6">
                   {summaries.map((sum) => (
-                    <div key={sum._id} className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
-                      <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+                    <div key={sum._id} className="p-6 rounded-2xl bg-slate-950/60 border border-slate-850 space-y-4">
+                      <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                         <div>
-                          <h3 className="font-bold text-slate-900">Dr. {sum.doctorId?.userId?.name}</h3>
-                          <p className="text-xs text-slate-500">Visit Date: {new Date(sum.createdAt).toLocaleDateString()}</p>
+                          <h3 className="font-bold text-white">Dr. {sum.doctorId?.userId?.name}</h3>
+                          <p className="text-xs text-slate-400 font-semibold mt-0.5">Visit Date: {new Date(sum.createdAt).toLocaleDateString()}</p>
                         </div>
                         <Badge variant="info">Diagnosis: {sum.diagnosis}</Badge>
                       </div>
 
                       <div>
-                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Patient Summary</h4>
-                        <p className="text-sm text-slate-700 leading-relaxed font-medium">
+                        <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Patient Summary</h4>
+                        <p className="text-sm text-slate-200 leading-relaxed font-medium">
                           {sum.patientFriendlySummary || sum.clinicalNotes}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Follow-up Instructions</h4>
-                        <p className="text-xs text-slate-600">{sum.followUpInstructions || 'No specific follow-up.'}</p>
+                        <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Follow-up Instructions</h4>
+                        <p className="text-xs text-slate-350">{sum.followUpInstructions || 'No specific follow-up.'}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-slate-500 italic">No past consultation records found.</p>
+                <p className="text-sm text-slate-400 italic py-6 text-center bg-slate-950/60 rounded-2xl border border-slate-800">No past consultation records found.</p>
               )}
             </div>
 
             {/* Prescriptions */}
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-card-subtle">
-              <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-brand-600" />
+            <div className="glass-panel-accent rounded-3xl p-6 shadow-xl">
+              <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-brand-400" />
                 Issued Digital Prescriptions
               </h2>
 
               {prescriptions.length > 0 ? (
                 <div className="grid md:grid-cols-2 gap-6">
                   {prescriptions.map((p) => (
-                    <div key={p._id} className="p-5 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
+                    <div key={p._id} className="p-5 rounded-xl border border-slate-850 bg-slate-950/60 space-y-3">
                       <div className="flex justify-between items-start">
                         <div>
-                          <h4 className="font-bold text-slate-900">Dr. {p.doctorId?.userId?.name}</h4>
-                          <p className="text-xs text-slate-500">{new Date(p.createdAt).toLocaleDateString()}</p>
+                          <h4 className="font-bold text-white">Dr. {p.doctorId?.userId?.name}</h4>
+                          <p className="text-xs text-slate-400">{new Date(p.createdAt).toLocaleDateString()}</p>
                         </div>
                         <button
                           onClick={() => window.print()}
-                          className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900"
+                          className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
                           title="Print Prescription"
                         >
                           <Printer className="w-4 h-4" />
                         </button>
                       </div>
 
-                      <div className="space-y-2 pt-2 border-t border-slate-200">
+                      <div className="space-y-2 pt-2 border-t border-slate-800">
                         {p.medications.map((m: any, idx: number) => (
-                          <div key={idx} className="bg-white p-3 rounded-lg border border-slate-100 text-xs">
-                            <p className="font-bold text-slate-900">{m.name} ({m.dosage})</p>
-                            <p className="text-slate-500">{m.frequency} • Duration: {m.duration}</p>
+                          <div key={idx} className="bg-slate-950 p-3 rounded-lg border border-slate-850 text-xs">
+                            <p className="font-bold text-white">{m.name} ({m.dosage})</p>
+                            <p className="text-slate-450 mt-0.5">{m.frequency} • Duration: {m.duration}</p>
                           </div>
                         ))}
                       </div>
@@ -117,7 +117,7 @@ export const MedicalHistoryPage: React.FC = () => {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-slate-500 italic">No digital prescriptions issued yet.</p>
+                <p className="text-sm text-slate-400 italic py-6 text-center bg-slate-950/60 rounded-2xl border border-slate-800">No digital prescriptions issued yet.</p>
               )}
             </div>
           </div>
