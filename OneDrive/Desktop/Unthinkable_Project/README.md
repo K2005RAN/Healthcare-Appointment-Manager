@@ -128,16 +128,9 @@ The platform is equipped with an intelligent, rule-compliant fallback parser and
 
 ## ⚡ Concurrency Control & Double-Booking Prevention
 
-MediBridge guarantees![MediBridge Appointment Booking System Architecture](./docs/assets/system_architecture.png)��───────────────────────────┬──────────────────────────────┘
-                             │ Commit Success
-                             ▼
-┌───────────────────────────────────────────────────────────┐
-│ 3. Asynchronous Non-Blocking Post-Commit Executions       │
-│    - process.nextTick() triggers AI Pre-Visit Briefing    │
-│    - Nodemailer dispatches Email Confirmation             │
-│    - Syncs Event to Google Calendar via OAuth 2.0         │
-└───────────────────────────────────────────────────────────┘
-```
+MediBridge guarantees zero double-booking under high request loads through a **Two-Tier Concurrency Architecture**:
+
+![MediBridge Appointment Booking System Architecture](./docs/assets/system_architecture.png)
 
 If a collision occurs:
 * Database rejects concurrent requests atomically with error code `SLOT_ALREADY_BOOKED`.
