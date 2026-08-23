@@ -46,7 +46,7 @@ const seedDatabase = async () => {
         const doctorData = [
             {
                 name: 'Dr. Sarah Jenkins',
-                email: 'sarah.jenkins@aurahealth.com',
+                email: 'sarah.jenkins@medibridge.com',
                 specIndex: 0, // Cardiology
                 experience: 12,
                 consultationFee: 1500,
@@ -54,7 +54,7 @@ const seedDatabase = async () => {
             },
             {
                 name: 'Dr. Marcus Vance',
-                email: 'marcus.vance@aurahealth.com',
+                email: 'marcus.vance@medibridge.com',
                 specIndex: 1, // Dermatology
                 experience: 9,
                 consultationFee: 1200,
@@ -62,7 +62,7 @@ const seedDatabase = async () => {
             },
             {
                 name: 'Dr. Elena Rostova',
-                email: 'elena.rostova@aurahealth.com',
+                email: 'elena.rostova@medibridge.com',
                 specIndex: 2, // General Physician
                 experience: 15,
                 consultationFee: 800,
@@ -70,7 +70,7 @@ const seedDatabase = async () => {
             },
             {
                 name: 'Dr. David Chen',
-                email: 'david.chen@aurahealth.com',
+                email: 'david.chen@medibridge.com',
                 specIndex: 3, // Pediatrics
                 experience: 8,
                 consultationFee: 1000,
@@ -78,7 +78,7 @@ const seedDatabase = async () => {
             },
             {
                 name: 'Dr. Robert Thorne',
-                email: 'robert.thorne@aurahealth.com',
+                email: 'robert.thorne@medibridge.com',
                 specIndex: 4, // Orthopedics
                 experience: 14,
                 consultationFee: 1600,
@@ -238,7 +238,7 @@ const seedDatabase = async () => {
         console.log(' SEEDING COMPLETED SUCCESSFULLY!');
         console.log(' Credentials for login:');
         console.log(' Admin:   admin@example.com  / admin123');
-        console.log(' Doctor:  sarah.jenkins@aurahealth.com / password123');
+        console.log(' Doctor:  sarah.jenkins@medibridge.com / password123');
         console.log(' Patient: emily.watson@example.com / password123');
         console.log('====================================================');
         process.exit(0);

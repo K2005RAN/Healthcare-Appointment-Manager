@@ -12,7 +12,7 @@ const startServer = async () => {
         await (0, db_1.connectDB)();
         app_1.default.listen(env_1.env.PORT, () => {
             console.log(`==================================================`);
-            console.log(` AuraHealth Backend Server Listening on Port ${env_1.env.PORT}`);
+            console.log(` MediBridge Backend Server Listening on Port ${env_1.env.PORT}`);
             console.log(` Environment: ${env_1.env.NODE_ENV}`);
             console.log(` Healthcheck: http://localhost:${env_1.env.PORT}/health`);
             console.log(`==================================================`);

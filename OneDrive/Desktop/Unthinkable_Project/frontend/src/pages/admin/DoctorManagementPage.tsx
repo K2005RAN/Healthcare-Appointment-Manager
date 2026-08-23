@@ -138,7 +138,7 @@ export const DoctorManagementPage: React.FC = () => {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full p-2.5 rounded-xl border border-slate-300 text-sm"
-              placeholder="jane.smith@aurahealth.com"
+              placeholder="jane.smith@medibridge.com"
             />
           </div>
 

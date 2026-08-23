@@ -81,7 +81,7 @@ export const LoginPage: React.FC = () => {
               </button>
               <button
                 type="button"
-                onClick={() => handleFillDemo('sarah.jenkins@aurahealth.com', 'DOCTOR')}
+                onClick={() => handleFillDemo('sarah.jenkins@medibridge.com', 'DOCTOR')}
                 className="px-2 py-1.5 bg-white border border-brand-200 rounded-lg text-xs font-semibold text-brand-700 hover:bg-brand-100 transition-colors"
               >
                 Fill Doctor

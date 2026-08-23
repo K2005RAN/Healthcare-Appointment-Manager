@@ -29,7 +29,7 @@ export const RegisterPage: React.FC = () => {
       const res = await authApi.register(formData);
       if (res.success) {
         login(res.data.user, res.data.accessToken);
-        showToast('Registration successful! Welcome to AuraHealth.', 'success');
+        showToast('Registration successful! Welcome to MediBridge.', 'success');
         navigate('/patient/dashboard');
       }
     } catch (err: any) {

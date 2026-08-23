@@ -18,7 +18,7 @@ class EmailService {
     });
     static async sendEmail(payload) {
         try {
-            if (!env_1.env.EMAIL_USER || env_1.env.EMAIL_USER === 'dev@aurahealth.com' || env_1.env.EMAIL_USER === 'mock_user') {
+            if (!env_1.env.EMAIL_USER || env_1.env.EMAIL_USER === 'dev@medibridge.com' || env_1.env.EMAIL_USER === 'mock_user') {
                 // Log clean message for development when SMTP credentials are mock
                 console.log(`[Email Simulation] To: ${payload.to} | Subject: ${payload.subject}`);
                 return true;
@@ -40,11 +40,11 @@ class EmailService {
     }
     // --- Responsive HTML Email Templates ---
     static getBookingConfirmationTemplate(data) {
-        const subject = `Appointment Confirmed with Dr. ${data.doctorName} - AuraHealth`;
+        const subject = `Appointment Confirmed with Dr. ${data.doctorName} - MediBridge`;
         const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; padding: 20px; border-radius: 8px;">
         <div style="background-color: #0284c7; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">AuraHealth</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">MediBridge</h1>
           <p style="color: #e0f2fe; margin: 5px 0 0 0;">Healthcare Appointments & Follow-up Manager</p>
         </div>
         <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
@@ -61,7 +61,7 @@ class EmailService {
           <p style="color: #475569;">You will receive an AI-generated pre-visit summary and reminders prior to your consultation.</p>
           
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 25px 0;" />
-          <p style="color: #94a3b8; font-size: 12px; text-align: center;">AuraHealth SaaS • Confidential Healthcare Communication</p>
+          <p style="color: #94a3b8; font-size: 12px; text-align: center;">MediBridge SaaS • Confidential Healthcare Communication</p>
         </div>
       </div>
     `;
@@ -72,7 +72,7 @@ class EmailService {
         const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; padding: 20px; border-radius: 8px;">
         <div style="background-color: #ef4444; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">AuraHealth</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">MediBridge</h1>
         </div>
         <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
           <h2 style="color: #0f172a; margin-top: 0;">Appointment Cancellation Notice</h2>
@@ -86,11 +86,11 @@ class EmailService {
         return { subject, html };
     }
     static getDoctorBookingNotificationTemplate(data) {
-        const subject = `New Appointment Scheduled: ${data.patientName} - AuraHealth`;
+        const subject = `New Appointment Scheduled: ${data.patientName} - MediBridge`;
         const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; padding: 20px; border-radius: 8px;">
         <div style="background-color: #0f172a; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">AuraHealth Doctor Hub</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">MediBridge Doctor Hub</h1>
           <p style="color: #94a3b8; margin: 5px 0 0 0;">New Patient Appointment Notification</p>
         </div>
         <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
@@ -107,7 +107,7 @@ class EmailService {
 
           <p style="color: #475569;">An AI pre-visit summary will be synthesized and attached to this patient's chart prior to consultation.</p>
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 25px 0;" />
-          <p style="color: #94a3b8; font-size: 12px; text-align: center;">AuraHealth Clinical SaaS System Notification</p>
+          <p style="color: #94a3b8; font-size: 12px; text-align: center;">MediBridge Clinical SaaS System Notification</p>
         </div>
       </div>
     `;
@@ -118,7 +118,7 @@ class EmailService {
         const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; padding: 20px; border-radius: 8px;">
         <div style="background-color: #ef4444; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">AuraHealth Slot Freed</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">MediBridge Slot Freed</h1>
         </div>
         <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
           <h2 style="color: #0f172a; margin-top: 0;">Appointment Cancellation Notice</h2>
@@ -127,7 +127,7 @@ class EmailService {
           ${data.reason ? `<p style="color: #475569;"><strong>Reason:</strong> ${data.reason}</p>` : ''}
           <p style="color: #10b981; font-weight: bold;">This time slot has been freed and made available on your booking calendar.</p>
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 25px 0;" />
-          <p style="color: #94a3b8; font-size: 12px; text-align: center;">AuraHealth Clinical SaaS System Notification</p>
+          <p style="color: #94a3b8; font-size: 12px; text-align: center;">MediBridge Clinical SaaS System Notification</p>
         </div>
       </div>
     `;
@@ -138,7 +138,7 @@ class EmailService {
         const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; padding: 20px; border-radius: 8px;">
         <div style="background-color: #6366f1; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">AuraHealth</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">MediBridge</h1>
         </div>
         <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
           <h2 style="color: #0f172a; margin-top: 0;">Appointment Time Updated</h2>
@@ -159,7 +159,7 @@ class EmailService {
         const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; padding: 20px; border-radius: 8px;">
         <div style="background-color: #6366f1; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">AuraHealth</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">MediBridge</h1>
         </div>
         <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
           <h2 style="color: #0f172a; margin-top: 0;">Patient Appointment Rescheduled</h2>
@@ -179,7 +179,7 @@ class EmailService {
         const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; padding: 20px; border-radius: 8px;">
         <div style="background-color: #10b981; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">AuraHealth Medication Reminder</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">MediBridge Medication Reminder</h1>
         </div>
         <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0;">
           <p style="color: #475569;">Hello <strong>${data.patientName}</strong>,</p>

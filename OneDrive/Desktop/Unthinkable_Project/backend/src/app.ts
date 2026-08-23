@@ -35,7 +35,7 @@ app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({
     status: 'UP',
     timestamp: new Date().toISOString(),
-    service: 'AuraHealth Backend API',
+    service: 'MediBridge Backend API',
   });
 });
 
