@@ -23,6 +23,7 @@
 ## 📋 Table of Contents
 
 - [✨ Key Platform Features](#-key-platform-features)
+- [🖼️ User Interface Showcase](#️-user-interface-showcase)
 - [🤖 AI Summaries & LLM Integration Engine](#-ai-summaries--llm-integration-engine)
 - [⚡ Concurrency Control & Double-Booking Prevention](#-concurrency-control--double-booking-prevention)
 - [🏗️ System Architecture & Workflow](#️-system-architecture--workflow)
@@ -59,6 +60,17 @@
 * **Doctor Leave Conflict Engine**: Schedule doctor leaves with automatic conflict analysis ("X appointments affected"), cancellation dispatches, and patient notifications.
 * **Notification Queue Monitor**: Track email dispatches with manual retry triggers and exponential backoff states.
 * **Immutable System Audit Logs**: Trace platform security events, user logins, and administrative actions.
+
+---
+
+## 🖼️ User Interface Showcase
+
+| Portal & Feature | Interface Screenshot / Preview |
+| :--- | :--- |
+| **🏠 Landing Page & Doctor Search** | ![MediBridge Landing Page UI](./docs/assets/landing_ui.png) |
+| **🏥 Patient Portal & AI Symptom Submission** | ![MediBridge Patient Portal UI](./docs/assets/patient_ui.png) |
+| **🩺 Doctor Agenda & AI Clinical Briefing** | ![MediBridge Doctor Portal UI](./docs/assets/doctor_ui.png) |
+| **🛡️ Admin Analytics & Leave Conflict Engine** | ![MediBridge Admin Portal UI](./docs/assets/admin_ui.png) |
 
 ---
 
