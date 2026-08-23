@@ -18,10 +18,26 @@
 
 </div>
 
+> [!NOTE]
+> ### 🌐 Live Production Deployments
+> * **Live Demo Frontend (Vercel)**: [https://healthcare-appointment-manager-ashen.vercel.app/](https://healthcare-appointment-manager-ashen.vercel.app/)
+> * **Production Backend API (Render)**: [https://healthcare-appointment-manager-gg87.onrender.com](https://healthcare-appointment-manager-gg87.onrender.com)
+
+> [!IMPORTANT]
+> ### 🔑 Quick Demo Login Credentials
+> Use these credentials to sign in and test the platform:
+> 
+> | Role / Portal | Email Address | Password | Key Access Rights |
+> | :--- | :--- | :--- | :--- |
+> | **🛡️ Admin** | `admin@example.com` | `admin123` | Analytics, Doctor Management, Leave Conflict Engine, Audit Logs |
+> | **🩺 Doctor** | `sarah.jenkins@medibridge.com` | `password123` | Clinical Dashboard, AI Urgency Briefings, Prescriptions & Consultation Recorder |
+> | **🏥 Patient** | `emily.watson@example.com` | `password123` | Doctor Search, 5-min Slot Hold, AI Symptoms Submission, Digital Reminders |
+
 ---
 
 ## 📋 Table of Contents
 
+- [🌐 Live Production Deployments & Credentials](#-live-production-deployments)
 - [✨ Key Platform Features](#-key-platform-features)
 - [🖼️ User Interface Showcase](#️-user-interface-showcase)
 - [🤖 AI Summaries & LLM Integration Engine](#-ai-summaries--llm-integration-engine)
