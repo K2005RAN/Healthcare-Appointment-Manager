@@ -9,7 +9,6 @@ import {
   Clock,
   UserCheck,
   CalendarDays,
-  ShieldCheck,
   Bell,
   ClipboardList,
 } from 'lucide-react';
@@ -49,11 +48,14 @@ export const Sidebar: React.FC = () => {
       : adminLinks;
 
   return (
-    <aside className="w-64 bg-white/90 border-r border-slate-200/80 min-h-[calc(100vh-4rem)] p-4 flex flex-col justify-between shrink-0 shadow-xs">
+    <aside className="w-64 bg-slate-900/90 backdrop-blur-xl border-r border-slate-800/80 min-h-[calc(100vh-4rem)] p-4 flex flex-col justify-between shrink-0 shadow-xl">
       <div>
         <div className="px-3 py-2 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest flex items-center justify-between">
-          <span>{user.role} NAVIGATION</span>
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>{user.role} PORTAL</span>
+          <span className="flex h-2 w-2 relative">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
         </div>
         <nav className="mt-3 space-y-1.5">
           {links.map((link) => {
@@ -63,21 +65,20 @@ export const Sidebar: React.FC = () => {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                  `flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                     isActive
-                      ? 'bg-gradient-to-r from-brand-50 to-sky-50 text-brand-700 border border-brand-200 shadow-sm'
-                      : 'text-slate-600 hover:bg-slate-100/70 hover:text-slate-900'
+                      ? 'bg-gradient-to-r from-brand-600/30 to-sky-500/10 text-sky-300 border border-brand-500/30 shadow-glow-brand'
+                      : 'text-slate-400 hover:bg-slate-800/80 hover:text-slate-100 border border-transparent'
                   }`
                 }
               >
-                <Icon className="w-4 h-4 shrink-0 text-brand-600" />
+                <Icon className="w-4 h-4 shrink-0 text-sky-400" />
                 {link.label}
               </NavLink>
             );
           })}
         </nav>
       </div>
-
     </aside>
   );
 };
