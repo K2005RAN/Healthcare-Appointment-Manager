@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { authApi } from '../api/services';
 import { Button } from '../components/ui/Button';
-import { HeartPulse, Mail, Lock, Sparkles, ShieldCheck, Zap, ArrowLeft } from 'lucide-react';
+import { HeartPulse, Mail, Lock, Sparkles, Zap, ArrowLeft } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -152,10 +152,6 @@ export const LoginPage: React.FC = () => {
             </Button>
           </form>
 
-          <div className="pt-4 border-t border-slate-800/80 flex items-center justify-center gap-2 text-slate-400 text-xs">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>256-bit Encrypted Healthcare Platform</span>
-          </div>
         </div>
       </div>
     </div>
